@@ -164,7 +164,7 @@
             android:id="@+id/buttonZERO"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:onClick="funcNumber"
             android:text="0"
             android:textSize="24sp" />
@@ -173,7 +173,7 @@
             android:id="@+id/buttonCLEAR"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:onClick="clearScreen"
             android:text="clear"
             android:textSize="24sp" />
@@ -182,7 +182,7 @@
             android:id="@+id/buttonEQUAL"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:onClick="funcEqual"
             android:text="="
             android:textSize="24sp" />
@@ -191,11 +191,35 @@
             android:id="@+id/buttonDIV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:onClick="funcOperator"
             android:text="/"
             android:textSize="24sp" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/buttonOPEN"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:onClick="funcOperator"
+            android:text="("
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/buttonCLOSE"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:onClick="funcOperator"
+            android:text=")"
+            android:textSize="24sp" />
     </LinearLayout>
 
 </LinearLayout>
