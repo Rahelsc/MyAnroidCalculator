@@ -17,11 +17,13 @@ public class MainActivity extends AppCompatActivity {
     String op;
     ArrayList<String> operations;
     ArrayList<Double> numbers;
+    boolean lastInputIsOperator;
 
 // try and take care of the following exception: 5+*/8 = ? what should be the result of that?
 // keep in mind that 8+-9 should be ok
 // what happens if user doesn't put an operation in parenthesis?? data shouldn't be sent to calculate!
 // add a decimal point to the calculator
+// add a place to show the user what input he entered
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.output); // R represent res or resource
         operations = new ArrayList<>();
         numbers = new ArrayList<>();
+//        lastInputIsOperator = true;
     }
 
     public void funcNumber(View view) {
@@ -93,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             numbers.set(index, res);
             numbers.remove(index+1);
         }
-        textView.setText(Double.toString(numbers.get(0)) + "\n" + numbers.toString());
+        textView.setText(Double.toString(numbers.get(0)));
         num1 = numbers.get(0); // save the last number in case user continues after equal
         numbers.clear();
     }
