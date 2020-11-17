@@ -12,7 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/userInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/output"
@@ -21,6 +29,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal|center_vertical"
             android:textSize="36sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -202,6 +211,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
+
+        <Button
+            android:id="@+id/buttonDECIMAL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:onClick="funcNumber"
+            android:text="."
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/buttonOPEN"

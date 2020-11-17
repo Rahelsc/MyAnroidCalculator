@@ -12,28 +12,26 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
-    double num1;
-    String op;
-    ArrayList<String> operations;
-    ArrayList<Double> numbers;
-    boolean lastInputIsOperator;
+    private TextView textView;
+    private TextView userInput;
+    private double num1;
+    private String op;
+    private ArrayList<String> operations;
+    private ArrayList<Double> numbers;
 
 // try and take care of the following exception: 5+*/8 = ? what should be the result of that?
 // keep in mind that 8+-9 should be ok
 // what happens if user doesn't put an operation in parenthesis?? data shouldn't be sent to calculate!
-// add a decimal point to the calculator
-// add a place to show the user what input he entered
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState); // תשמור את המצב הקיים של האנדרואיד כדי שאם יקרוס זה לא יהרוס את מערכת ההפעלה
         setContentView(R.layout.activity_main); // זה מה שמקשר לXML
 
         textView = findViewById(R.id.output); // R represent res or resource
+        userInput = findViewById(R.id.userInput);
         operations = new ArrayList<>();
         numbers = new ArrayList<>();
-//        lastInputIsOperator = true;
     }
 
     public void funcNumber(View view) {
@@ -41,13 +39,16 @@ public class MainActivity extends AppCompatActivity {
         textView.append(b.getText());
 
         String result = textView.getText().toString();
-        num1 = Integer.parseInt(result);
+        userInput.append(result);
+        num1 = Double.parseDouble(result);
     }
 
     public void funcOperator(View view) {
         Button b = (Button) view;
         textView.setText("");
         op = b.getText().toString();
+        userInput.append(op);
+
         operations.add(op);
         if (!op.equals("("))
             numbers.add(num1);
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
             numbers.remove(index+1);
         }
         textView.setText(Double.toString(numbers.get(0)));
+        userInput.append("=" + Double.toString(numbers.get(0)));
         num1 = numbers.get(0); // save the last number in case user continues after equal
         numbers.clear();
     }
@@ -118,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void clearScreen(View view) {
         textView.setText("");
+        userInput.setText("");
         operations.clear();
         numbers.clear();
     }
