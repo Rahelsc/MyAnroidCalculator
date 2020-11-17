@@ -3,9 +3,11 @@ package com.rachel.firstandroidlesson;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 // try and take care of the following exception: 5+*/8 = ? what should be the result of that?
 // keep in mind that 8+-9 should be ok
 // what happens if user doesn't put an operation in parenthesis?? data shouldn't be sent to calculate!
+// solve toast - why doesn't it work?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
     public void funcNumber(View view) {
         Button b = (Button) view;
         textView.append(b.getText());
+        userInput.append(b.getText());
 
         String result = textView.getText().toString();
-        userInput.append(result);
         num1 = Double.parseDouble(result);
     }
 
@@ -112,7 +115,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "*": sum = n1*n2;
                 break;
-            case "/": sum = n1/n2;
+            case "/":
+                try {
+                    if (n2 == 0.0)
+                        throw new ArithmeticException("division by zero");
+                    sum = n1/n2;
+                }
+                catch (ArithmeticException e){
+                    Toast.makeText(this, "cant devide by zero", Toast.LENGTH_LONG);
+                    textView.setText("");
+                    userInput.setText("");
+                    operations.clear();
+                    numbers.clear();
+                }
                 break;
         }
         return sum;
