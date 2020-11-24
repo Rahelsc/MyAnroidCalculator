@@ -180,6 +180,52 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/buttonSCI"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/calc_button"
+            android:onClick="funcSCI"
+            android:text="sci"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/buttonDECIMAL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/calc_button"
+            android:onClick="funcNumber"
+            android:text="."
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/buttonOPEN"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/calc_button"
+            android:onClick="funcOperator"
+            android:text="("
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/buttonCLOSE"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/calc_button"
+            android:onClick="funcOperator"
+            android:text=")"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -225,40 +271,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
 
-        <Button
-            android:id="@+id/buttonDECIMAL"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:background="@drawable/calc_button"
-            android:onClick="funcNumber"
-            android:text="."
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/buttonOPEN"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:background="@drawable/calc_button"
-            android:onClick="funcOperator"
-            android:text="("
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/buttonCLOSE"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:background="@drawable/calc_button"
-            android:onClick="funcOperator"
-            android:text=")"
-            android:textSize="24sp" />
-    </LinearLayout>
 
 </LinearLayout>

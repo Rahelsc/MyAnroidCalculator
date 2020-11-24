@@ -4,17 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
-
+public class calcActivity extends AppCompatActivity {
     private TextView textView;
     private TextView userInput;
     private double num1;
@@ -22,15 +19,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> operations;
     private ArrayList<Double> numbers;
 
-// try and take care of the following exception: 5+*/8 = ? what should be the result of that?
-// keep in mind that 8+-9 should be ok
-// what happens if user doesn't put an operation in parenthesis?? data shouldn't be sent to calculate!
-// solve toast - why doesn't it work?
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState); // תשמור את המצב הקיים של האנדרואיד כדי שאם יקרוס זה לא יהרוס את מערכת ההפעלה
-        setContentView(R.layout.activity_main); // זה מה שמקשר לXML
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_calc);
 
         textView = findViewById(R.id.output); // R represent res or resource
         userInput = findViewById(R.id.userInput);
@@ -64,7 +56,16 @@ public class MainActivity extends AppCompatActivity {
             numbers.add(num1);
 
         int index = 0;
+        while (operations.contains("SQRT")){
+            String checkSQRT = operations.get(index);
+            if (checkSQRT.equals("SQRT")){
+                double res = calculate(numbers.get(index));
+                operations.remove(index);
+                numbers.set(index, res);
+            }
+        }
 
+        index = 0;
         while (operations.contains("("))
         {
             String checkParenthesis = operations.get(index);
@@ -82,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         index = 0;
-        while (operations.contains("*") || operations.contains("/"))
+        while (operations.contains("*") || operations.contains("/") || operations.contains("%") || operations.contains("POW"))
         {
             String currentOp = operations.get(index);
-            if (currentOp.equals("/") || currentOp.equals("*")){
+            if (currentOp.equals("/") || currentOp.equals("*") || currentOp.equals("%") || currentOp.equals("POW")){
 
                 double res = calculate(numbers.get(index), numbers.get(index+1), currentOp);
                 operations.remove(index);
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "/":
                 try {
+                    sum = 66;
                     if (n2 == 0.0)
                         throw new ArithmeticException("division by zero");
                     sum = n1/n2;
@@ -131,12 +133,43 @@ public class MainActivity extends AppCompatActivity {
                     numbers.clear();
                 }
                 break;
-
+            case "%":
+                try {
+                    if (n2 == 0.0)
+                        throw new ArithmeticException("division by zero");
+                    sum = (int)n1%(int)n2;
+                }
+                catch (ArithmeticException e){
+                    Toast.makeText(this, "cant devide by zero", Toast.LENGTH_LONG);
+                    textView.setText("");
+                    userInput.setText("");
+                    operations.clear();
+                    numbers.clear();
+                }
+                break;
+            case "POW":
+                sum = Math.pow(n1, n2);
+                break;
         }
         return sum;
     }
 
-
+    public double calculate(double n1){
+        double sum = 0;
+        try {
+            if (n1 < 0.0)
+                throw new ArithmeticException("sqrt for negative number");
+            sum = Math.sqrt(n1);
+        }
+        catch (ArithmeticException e){
+            Toast.makeText(this, "cant sqrt negative number", Toast.LENGTH_LONG);
+            textView.setText("");
+            userInput.setText("");
+            operations.clear();
+            numbers.clear();
+        }
+        return sum;
+    }
 
     public void clearScreen(View view) {
         textView.setText("");
@@ -146,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void funcSCI(View view) {
-        Intent intent = new Intent(this, calcActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
