@@ -19,8 +19,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView userInput;
     private double num1;
     private String op;
+    private boolean isNewNumber = false;
     private ArrayList<String> operations;
     private ArrayList<Double> numbers;
+    private final String KEY = "MainActivity to CalcActivity";
 
 // try and take care of the following exception: 5+*/8 = ? what should be the result of that?
 // keep in mind that 8+-9 should be ok
@@ -42,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         Button b = (Button) view;
         textView.append(b.getText());
         userInput.append(b.getText());
-
         String result = textView.getText().toString();
         num1 = Double.parseDouble(result);
+        isNewNumber = true; // see comment in funcOperator for clarification
     }
 
     public void funcOperator(View view) {
@@ -54,13 +56,18 @@ public class MainActivity extends AppCompatActivity {
         userInput.append(op);
 
         operations.add(op);
-        if (!op.equals("("))
+
+        if (!op.equals("(") && isNewNumber) {
             numbers.add(num1);
+            isNewNumber = false; // to make sure only a previously
+                                 // un entered number is added to the array
+                                 // (in case two operators were pressed consecutively)
+        }
     }
 
 
     public void funcEqual(View view) {
-        if (!op.equals("(") && !op.equals(")")) // for last number to enter
+        if (!op.equals(")")) // for last number to enter
             numbers.add(num1);
 
         int index = 0;
@@ -80,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
             }
             else index++;
         }
+
+        textView.setText(numbers.toString() + "\n" + operations.toString());
 
         index = 0;
         while (operations.contains("*") || operations.contains("/"))
@@ -105,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(Double.toString(numbers.get(0)));
         userInput.append("=" + Double.toString(numbers.get(0)));
         num1 = numbers.get(0); // save the last number in case user continues after equal
-        numbers.clear();
     }
 
     public double calculate(double n1, double n2, String o){
@@ -147,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void funcSCI(View view) {
         Intent intent = new Intent(this, calcActivity.class);
+        intent.putExtra(KEY, "welcome");
         startActivity(intent);
     }
 }
