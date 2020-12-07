@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".formActivity">
+    tools:context=".registration">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <EditText
@@ -34,7 +34,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <EditText
@@ -55,18 +55,34 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttonLogin"
-                style="@style/Widget.AppCompat.Button.Colored"
+            <EditText
+                android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/login_button"
-                android:fontFamily="sans-serif-black"
-                android:onClick="login"
-                android:text="Login"
-                android:textColor="@color/material_on_primary_emphasis_high_type"
-                android:textSize="30sp" />
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:text="phone number"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:text="city"
+                android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
         <LinearLayout

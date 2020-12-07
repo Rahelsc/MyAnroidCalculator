@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "606863695637",
+    "firebase_url": "https://projectcalc-18a66.firebaseio.com",
+    "project_id": "projectcalc-18a66",
+    "storage_bucket": "projectcalc-18a66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606863695637:android:f7364bb1aeea0df320531c",
+        "android_client_info": {
+          "package_name": "com.rachel.firstandroidlesson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606863695637-n8csjeslqvqo3gtj6e64rv77534551hh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9eSr0cbvnHWPrT5If_nLVRZ_0ke_oB00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606863695637-n8csjeslqvqo3gtj6e64rv77534551hh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

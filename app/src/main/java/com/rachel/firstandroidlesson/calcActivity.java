@@ -190,6 +190,7 @@ public class calcActivity extends AppCompatActivity {
 
     public void funcSCI(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(KEY, "welcome");
         startActivity(intent);
     }
 }

@@ -15,49 +15,38 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class formActivity extends AppCompatActivity {
+public class registration extends AppCompatActivity {
+
     private FirebaseAuth mAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form);
+        setContentView(R.layout.activity_registration);
         mAuth = FirebaseAuth.getInstance();
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
-    }
-
-    public void registration(View view){
-        Intent intent = new Intent(this, registration.class);
-        startActivity(intent);
-    }
-
-    public void login(View view){
+    public void registration(View view) {
         EditText textEmail = findViewById(R.id.myEmail);
         String email = textEmail.getText().toString();
         EditText textPass = findViewById(R.id.myPass);
         String password = textPass.getText().toString();
-        mAuth.signInWithEmailAndPassword(email, password)
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(formActivity.this, "Authentication success.",
+                            Toast.makeText(registration.this, "registration success.",
                                     Toast.LENGTH_SHORT).show();
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             goToCalc(view);
+
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(formActivity.this, "Authentication failed.",
+                            Toast.makeText(registration.this, "registration failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
 
