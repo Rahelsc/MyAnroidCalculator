@@ -25,8 +25,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="email"
                 android:inputType="textPersonName"
-                android:text="Email"
                 android:textColor="@android:color/darker_gray" />
 
         </LinearLayout>
@@ -44,8 +44,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="password"
                 android:inputType="textPersonName"
-                android:text="password"
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
@@ -62,8 +62,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="phone number"
                 android:inputType="textPersonName"
-                android:text="phone number"
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
@@ -80,8 +80,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="city"
                 android:inputType="textPersonName"
-                android:text="city"
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 

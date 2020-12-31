@@ -3,19 +3,29 @@ package com.rachel.firstandroidlesson;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+
 
     private TextView textView;
     private TextView userInput;
@@ -25,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> operations;
     private ArrayList<Double> numbers;
     private final String KEY = "MainActivity to CalcActivity";
+    private FirebaseAuth mAuth;
 
 // try and take care of the following exception: 5+*/8 = ? what should be the result of that?
 // keep in mind that 8+-9 should be ok
@@ -39,6 +50,74 @@ public class MainActivity extends AppCompatActivity {
         userInput = findViewById(R.id.userInput);
         operations = new ArrayList<>();
         numbers = new ArrayList<>();
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser(); // get instance of user
+        String uid = user.getUid(); // get current user id
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // name of project
+        DatabaseReference myRef = database.getReference("persons").child(uid); // input user i
+        // causes crashing for the login form
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Log.d("yoad","whatttt??");
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                String value = dataSnapshot.getValue(Person.class).getEmail();
+//                userInput.setText("hello "+value);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//            }
+//        });
+
+        /*
+        *
+        * public class MainActivity extends AppCompatActivity {
+            SharedPreferences sharedPreferences;
+            EditText user;
+            EditText pass;
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+                sharedPreferences = getPreferences(MODE_PRIVATE);
+
+                 user = findViewById(R.id.editTextUser);
+                 pass = findViewById(R.id.editTextPass);
+
+                if( sharedPreferences.getString("keyUser" , null ) != null)
+                {
+                  user.setText(sharedPreferences.getString("keyUser" , null ));
+                  pass.setText(sharedPreferences.getString("keyPass" , null ));
+                }
+            }
+
+            public void func(View view) {
+
+
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("keyUser" , user.getText().toString());
+                editor.putString("keyPass" , pass.getText().toString());
+                editor.apply();
+
+                Intent intent = new Intent( this , MainActivity2.class);
+
+        *
+        *
+        *
+        * */
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 
     public void funcNumber(View view) {

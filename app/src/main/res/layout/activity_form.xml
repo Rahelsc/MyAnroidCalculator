@@ -25,8 +25,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="Email"
                 android:inputType="textPersonName"
-                android:text="Email"
                 android:textColor="@android:color/darker_gray" />
 
         </LinearLayout>
@@ -44,8 +44,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
+                android:hint="password"
                 android:inputType="textPersonName"
-                android:text="password"
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
